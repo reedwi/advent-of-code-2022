@@ -323,3 +323,62 @@ To begin, find all of the directories with a total size of at most 100000, then 
 Find all of the directories with a total size of at most 100000. What is the sum of the total sizes of those directories?
 
 ### Part 2
+The total disk space available to the filesystem is 70000000. To run the update, you need unused space of at least 30000000. You need to find a directory you can delete that will free up enough space to run the update.
+
+In the example above, the total size of the outermost directory (and thus the total amount of used space) is 48381165; this means that the size of the unused space must currently be 21618835, which isn't quite the 30000000 required by the update. Therefore, the update still requires a directory with total size of at least 8381165 to be deleted before it can run.
+
+To achieve this, you have the following options:
+
+Delete directory e, which would increase unused space by 584.
+Delete directory a, which would increase unused space by 94853.
+Delete directory d, which would increase unused space by 24933642.
+Delete directory /, which would increase unused space by 48381165.
+Directories e and a are both too small; deleting them would not free up enough space. However, directories d and / are both big enough! Between these, choose the smallest: d, increasing unused space by 24933642.
+
+Find the smallest directory that, if deleted, would free up enough space on the filesystem to run the update. What is the total size of that directory?
+
+## Day 8
+### Part 1
+```
+30373
+25512
+65332
+33549
+35390
+```
+Each tree is represented as a single digit whose value is its height, where 0 is the shortest and 9 is the tallest.
+
+A tree is visible if all of the other trees between it and an edge of the grid are shorter than it. Only consider trees in the same row or column; that is, only look up, down, left, or right from any given tree.
+
+All of the trees around the edge of the grid are visible - since they are already on the edge, there are no trees to block the view. In this example, that only leaves the interior nine trees to consider:
+
+- The top-left 5 is visible from the left and top. (It isn't visible from the right or bottom since other trees of height 5 are in the way.)
+- The top-middle 5 is visible from the top and right.
+- The top-right 1 is not visible from any direction; for it to be visible, there would need to only be trees of height 0 between it and an edge.
+- The left-middle 5 is visible, but only from the right.
+- The center 3 is not visible from any direction; for it to be visible, there would need to be only trees of at most height 2 between it and an edge.
+- The right-middle 3 is visible from the right.
+- In the bottom row, the middle 5 is visible, but the 3 and 4 are not.
+
+With 16 trees visible on the edge and another 5 visible in the interior, a total of 21 trees are visible in this arrangement.
+
+Consider your map; how many trees are visible from outside the grid?
+
+### Part 2
+However, you can do even better: consider the tree of height 5 in the middle of the fourth row:
+```
+30373
+25512
+65332
+33549
+35390
+```
+- Looking up, its view is blocked at 2 trees (by another tree with a height of 5).
+- Looking left, its view is not blocked; it can see 2 trees.
+- Looking down, its view is also not blocked; it can see 1 tree.
+- Looking right, its view is blocked at 2 trees (by a massive tree of height 9).
+
+This tree's scenic score is 8 (2 * 2 * 1 * 2); this is the ideal spot for the tree house.
+
+## Day 9
+### Part 1
